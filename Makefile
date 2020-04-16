@@ -5,4 +5,4 @@ clean:
 	pystarter clean
 
 run: clean
-	python3 run.py
+	python3 pi_ssh_vnc.py
