@@ -1,4 +1,5 @@
 import requests
+import socket
 from config import *
 from smtplib import SMTP
 from email.mime.text import MIMEText
@@ -13,6 +14,7 @@ email_message = ''
 for jsonItems in jsonTunnels:
     email_message += (jsonItems['public_url']) + '\n'
 
+email_message += socket.gethostname()
 
 name = ('pi-ssh-vnc <' + emailUser + '>')
 msg = MIMEMultipart()
