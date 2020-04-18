@@ -14,13 +14,16 @@ email_message = ''
 for jsonItems in jsonTunnels:
     email_message += (jsonItems['public_url']) + '\n'
 
-email_message += socket.gethostname()
+hostname = repr(socket.gethostname())
+
+email_message += 'for\n'
+email_message += hostname
 
 name = ('pi-ssh-vnc <' + emailUser + '>')
 msg = MIMEMultipart()
 msg['From'] = name
 msg['To'] = emailUser
-msg['Subject'] = 'A pi was restarted, here are the newley generated ngrok urls'
+msg['Subject'] = hostname + ' was restarted, here are the new generated ngrok urls'
 msg.attach(MIMEText(email_message,'plain'))
 message = msg.as_string()
 
