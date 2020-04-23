@@ -12,7 +12,8 @@ jsonTunnels = tunnels.json()['tunnels']
 email_message = ''
 
 for jsonItems in jsonTunnels:
-    email_message += (jsonItems['public_url']) + '\n'
+    email_message += (jsonItems['config']['addr'] + '\n')
+    email_message += (jsonItems['public_url']) + '\n\n'
 
 hostname = repr(socket.gethostname())
 
