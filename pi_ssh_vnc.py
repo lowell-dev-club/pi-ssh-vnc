@@ -6,10 +6,12 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import time
 
-time.sleep(60 * 3)
+while True:
+    time.sleep(5)
+    tunnels = requests.get('http://127.0.0.1:4040/api/tunnels')
+    if tunnels.status_code == 200:
+        break
 
-
-tunnels = requests.get('http://127.0.0.1:4040/api/tunnels')
 jsonTunnels = tunnels.json()['tunnels']
 
 email_message = ''
