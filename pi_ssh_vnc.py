@@ -4,6 +4,9 @@ from config import *
 from smtplib import SMTP
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import time
+
+time.sleep(30)
 
 
 tunnels = requests.get('http://127.0.0.1:4045/api/tunnels')
