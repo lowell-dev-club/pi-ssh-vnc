@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import time
 
-time.sleep(30)
+time.sleep(60 * 3)
 
 
 tunnels = requests.get('http://127.0.0.1:4040/api/tunnels')
