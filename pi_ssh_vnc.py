@@ -9,7 +9,7 @@ import time
 time.sleep(30)
 
 
-tunnels = requests.get('http://127.0.0.1:4045/api/tunnels')
+tunnels = requests.get('http://127.0.0.1:4040/api/tunnels')
 jsonTunnels = tunnels.json()['tunnels']
 
 email_message = ''
