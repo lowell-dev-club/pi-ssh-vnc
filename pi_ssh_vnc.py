@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-tunnels = requests.get('http://127.0.0.1:4040/api/tunnels')
+tunnels = requests.get('http://127.0.0.1:4045/api/tunnels')
 jsonTunnels = tunnels.json()['tunnels']
 
 email_message = ''
