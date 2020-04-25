@@ -5,6 +5,7 @@ from smtplib import SMTP
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import time
+import re
 
 while True:
     time.sleep(5)
@@ -17,19 +18,21 @@ jsonTunnels = tunnels.json()['tunnels']
 email_message = ''
 
 for jsonItems in jsonTunnels:
-    email_message += (jsonItems['config']['addr'] + '\n')
-    email_message += (jsonItems['public_url']) + '\n\n'
+
+    whichPort = re.findall('[0-9]+', repr(jsonItems['config']['addr']))[0]
+    ngrokUrl = jsonItems['public_url']
+    email_message += (f'Port: {whichPort} forwards to > {ngrokUrl}\n\n')
 
 hostname = repr(socket.gethostname())
 
 email_message += 'for\n'
-email_message += hostname
+email_message += hostname[1:len(hostname) - 1]
 
 name = ('pi-ssh-vnc <' + emailUser + '>')
 msg = MIMEMultipart()
 msg['From'] = name
 msg['To'] = emailUser
-msg['Subject'] = hostname + ' was restarted, here are the new generated ngrok urls'
+msg['Subject'] = hostname[1:len(hostname) - 1] + ' was restarted, here are the new generated ngrok urls'
 msg.attach(MIMEText(email_message,'plain'))
 message = msg.as_string()
 
