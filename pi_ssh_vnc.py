@@ -23,9 +23,12 @@ for jsonItems in jsonTunnels:
     ngrokUrl = jsonItems['public_url']
 
     if int(whichPort) == 22:
-        ngrokPort = re.findall('[0-9]+', repr(ngrokUrl)[1]
+
+        ngrokPort = re.findall('[0-9]+', repr(ngrokUrl))[1]
         email_message += (f'Port: {whichPort} forwards to > 0.tco.ngrok.io port: {ngrokPort}\n\n')
+
     else:
+
         email_message += (f'Port: {whichPort} forwards to > {ngrokUrl}\n\n')
 
 hostname = repr(socket.gethostname())
