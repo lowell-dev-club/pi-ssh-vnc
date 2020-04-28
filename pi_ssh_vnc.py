@@ -1,11 +1,11 @@
-import requests
+import re
+import time
 import socket
+import requests
 from config import *
 from smtplib import SMTP
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import time
-import re
 
 while True:
     time.sleep(5)
