@@ -14,6 +14,7 @@ while True:
         break
 
 jsonTunnels = tunnels.json()['tunnels']
+jsonTunnels.sort(key=lambda tunnels: tunnels['config']['addr'])
 
 email_message = ''
 
@@ -25,7 +26,9 @@ for jsonItems in jsonTunnels:
     if int(whichPort) == 22:
 
         ngrokPort = re.findall('[0-9]+', repr(ngrokUrl))[1]
-        email_message += (f'Port: {whichPort} forwards to > 0.tco.ngrok.io port: {ngrokPort}\n\n')
+        email_message += (f'Port: {whichPort} forwards to > 0.tco.ngrok.io port: {ngrokPort}\n')
+        email_message += (f'VNC: ssh -L 5900:localhost:5900 pi@0.tcp.ngrok.io -p {ngrokPort}\n')
+        email_message += (f'SSH/TERMINAL: ssh pi@0.tcp.ngrok.io -p {ngrokPort}\n\n')
 
     else:
 
