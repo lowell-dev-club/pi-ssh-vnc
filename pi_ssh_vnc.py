@@ -41,8 +41,8 @@ for jsonItems in jsonTunnels:
         # find the 0.tcp.ngrok.io port that forwards to local ssh port
         ngrokPort = findall('[0-9]+', repr(ngrokUrl))[1]
         email_message += (f'Port {whichPort} forwards to > 0.tco.ngrok.io port: {ngrokPort}\n')
-        email_message += (f'VNC: \nssh -L 5900:localhost:5900 pi@0.tcp.ngrok.io -p {ngrokPort}\n')
-        email_message += (f'SSH/TERMINAL: \nssh pi@0.tcp.ngrok.io -p {ngrokPort}\n\n')
+        email_message += (f'\nVNC: \nssh -L 5900:localhost:5900 pi@0.tcp.ngrok.io -p {ngrokPort}\n')
+        email_message += (f'\nSSH/TERMINAL: \nssh pi@0.tcp.ngrok.io -p {ngrokPort}\n\n')
 
     else:
 
