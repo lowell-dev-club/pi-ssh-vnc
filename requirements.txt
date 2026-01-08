@@ -3,5 +3,5 @@ chardet==3.0.4
 idna==3.7
 PyStarter==1.4.5
 requests==2.32.2
-urllib3==1.26.19
-urllib3==1.26.19
+urllib3==2.6.3
+urllib3==2.6.3
